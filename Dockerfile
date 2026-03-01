@@ -44,5 +44,5 @@ CMD ["bin/rr", "serve", "--config", ".rr.yaml"]
 
 FROM app-rr AS app-rr-fork
 
-RUN composer config repositories.fork --json '{"type": "vcs","url": "https://github.com/Kenny1911/roadrunner-bundle"}'
+RUN composer config repositories.fork --json '{"type":"package","package":{"name":"baldinof/roadrunner-bundle","version":"dev-streamed-respond","dist":{"url":"https://github.com/Kenny1911/roadrunner-bundle/archive/refs/heads/streamed-respond.zip","type":"zip"},"autoload":{"files":["src/functions.php"],"psr-4":{"Baldinof\\RoadRunnerBundle\\":"src"}}}}'
 RUN composer require --update-with-all-dependencies baldinof/roadrunner-bundle:dev-streamed-respond
