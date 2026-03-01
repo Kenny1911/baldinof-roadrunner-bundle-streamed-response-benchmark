@@ -1,0 +1,33 @@
+services:
+    app-rr:
+        build:
+            dockerfile: Dockerfile
+            target: app-rr
+        restart: always
+        ports:
+            - "${APP_RR_PORT:-127.0.0.1:8000}:8080"
+
+    app-rr-fork:
+        build:
+            dockerfile: Dockerfile
+            target: app-rr-fork
+        restart: always
+        ports:
+            - "${APP_RR_FORK_PORT:-127.0.0.1:8001}:8080"
+
+    app-fpm:
+        build:
+            dockerfile: Dockerfile
+            target: app-fpm
+        restart: always
+
+    app-fpm-nginx:
+        image: nginx:1.29.4-alpine
+        restart: always
+        depends_on:
+            - app-fpm
+        ports:
+            - "${APP_FPM_PORT:-127.0.0.1:8002}:80"
+        volumes:
+            - ./public/:/var/www/html/public:ro
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro

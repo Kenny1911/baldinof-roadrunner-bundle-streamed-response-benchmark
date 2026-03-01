@@ -1,0 +1,15 @@
+*
+!/bin/console
+!/config
+!/public
+!/src
+/src/Controller/file.txt
+!/.env
+!/.env.dev
+!/.env.prod
+!/.env.test
+!/.rr.yaml
+!/.rr.dev.yaml
+!/composer.json
+!/composer.lock
+!/symfony.lock
