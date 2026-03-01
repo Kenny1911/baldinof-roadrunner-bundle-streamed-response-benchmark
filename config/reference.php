@@ -472,7 +472,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     },
  *     disallow_search_engine_index?: bool|Param, // Enabled by default when debug is enabled. // Default: true
  *     http_client?: bool|array{ // HTTP Client configuration
- *         enabled?: bool|Param, // Default: false
+ *         enabled?: bool|Param, // Default: true
  *         max_host_connections?: int|Param, // The maximum number of connections to a single host.
  *         default_options?: array{
  *             headers?: array<string, mixed>,
@@ -690,28 +690,58 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         enabled?: bool|Param, // Default: false
  *     },
  * }
+ * @psalm-type BaldinofRoadRunnerConfig = array{
+ *     kernel_reboot?: array{
+ *         strategy?: list<scalar|Param|null>,
+ *         allowed_exceptions?: list<scalar|Param|null>,
+ *         max_jobs?: scalar|Param|null, // Only used when `reboot_kernel.strategy: max_jobs`. Maximum numbers of jobs before kernel reboot // Default: 1000
+ *         max_jobs_dispersion?: scalar|Param|null, // Only used when `reboot_kernel.strategy: max_jobs`. Dispersion persent // Default: 0.2
+ *         memory_threshold_mb?: scalar|Param|null, // Only used when `reboot_kernel.strategy: memory`. Memory threshold in megabytes // Default: 128
+ *     },
+ *     middlewares?: list<scalar|Param|null>,
+ *     interceptors?: list<scalar|Param|null>,
+ *     default_integrations?: bool|Param, // Default: true
+ *     metrics?: array{
+ *         enabled?: bool|Param, // Default: false
+ *         collect?: list<array{ // Default: []
+ *             type?: "counter"|"histogram"|"gauge"|"summary"|Param,
+ *             help?: scalar|Param|null, // Default: null
+ *             namespace?: scalar|Param|null, // Default: null
+ *             subsystem?: scalar|Param|null, // Default: null
+ *             labels?: list<scalar|Param|null>,
+ *             buckets?: list<float|Param>,
+ *         }>,
+ *     },
+ *     kv?: array{
+ *         storages?: list<scalar|Param|null>,
+ *     },
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
  *     services?: ServicesConfig,
  *     framework?: FrameworkConfig,
+ *     baldinof_road_runner?: BaldinofRoadRunnerConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         baldinof_road_runner?: BaldinofRoadRunnerConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         baldinof_road_runner?: BaldinofRoadRunnerConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         baldinof_road_runner?: BaldinofRoadRunnerConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,
