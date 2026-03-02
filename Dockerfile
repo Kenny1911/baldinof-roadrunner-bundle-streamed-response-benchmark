@@ -1,3 +1,5 @@
+FROM ghcr.io/roadrunner-server/roadrunner:2025.1.8 AS roadrunner
+
 FROM composer:2.9.2 AS composer
 
 
@@ -36,10 +38,13 @@ COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 COPY . /var/www/html
 RUN composer install
 
-RUN ./vendor/bin/rr get-binary --location bin/
+# Install rr binary
+COPY --from=roadrunner /usr/bin/rr bin/
 
 
 FROM php AS app-fpm
+
+RUN chown -R www-data:www-data .
 
 
 FROM php AS app-rr-fork
