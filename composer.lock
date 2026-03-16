@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kenny1911/roadrunner-bundle.git",
-                "reference": "997189ede5e1516473ef8c5d89a4214541ead1da"
+                "reference": "3790d42739ef5c5a3c13d084ce4be11a0a98acc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kenny1911/roadrunner-bundle/zipball/997189ede5e1516473ef8c5d89a4214541ead1da",
-                "reference": "997189ede5e1516473ef8c5d89a4214541ead1da",
+                "url": "https://api.github.com/repos/Kenny1911/roadrunner-bundle/zipball/3790d42739ef5c5a3c13d084ce4be11a0a98acc1",
+                "reference": "3790d42739ef5c5a3c13d084ce4be11a0a98acc1",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
                     "url": "https://github.com/Baldinof"
                 }
             ],
-            "time": "2026-03-02T17:26:22+00:00"
+            "time": "2026-03-16T21:06:43+00:00"
         },
         {
             "name": "composer/semver",
