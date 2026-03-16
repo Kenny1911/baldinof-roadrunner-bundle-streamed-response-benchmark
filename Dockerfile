@@ -44,6 +44,7 @@ COPY --from=roadrunner /usr/bin/rr bin/
 
 FROM php AS app-fpm
 
+COPY php-fpm.conf /usr/local/etc/php-fpm.d/zz-php-fpm.conf
 RUN chown -R www-data:www-data .
 
 

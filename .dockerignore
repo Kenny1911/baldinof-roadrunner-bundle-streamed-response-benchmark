@@ -9,7 +9,7 @@
 !/.env.prod
 !/.env.test
 !/.rr.yaml
-!/.rr.dev.yaml
+!/php-fpm.conf
 !/composer.json
 !/composer.lock
 !/symfony.lock

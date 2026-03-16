@@ -8,6 +8,7 @@ server:
 http:
   address: 0.0.0.0:8080
   pool:
+    num_workers: 20
     debug: false
   middleware: [ "static", "gzip" ]
   uploads:
@@ -28,8 +29,8 @@ logs:
       level: error
 
 # Uncomment to use metrics integration
-# rpc:
-#   listen: tcp://127.0.0.1:6001
+rpc:
+    listen: tcp://127.0.0.1:6001
 
 # Uncomment to use metrics integration
 # metrics:
